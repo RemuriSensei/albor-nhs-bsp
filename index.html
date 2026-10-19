@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Boy Scouts of the Philippines - Albor National High School</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        scout: {
+                            lime: '#74C025',
+                            limeDark: '#4F8D12',
+                            limeLight: '#9CE349',
+                            gold: '#F3CA28',
+                            goldRope: '#DAA520',
+                            goldHover: '#D9B01C',
+                            blue: '#0038A8',
+                            red: '#CE1126',
+                            deep: '#0F2013',
+                            cardBg: '#182C1D',
+                            borderGold: '#F3CA2840'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* Custom scrollbar and accessibility fixes */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F2013;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4F8D12;
+            border-radius: 4px;
+            border: 1px solid #F3CA2840;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F3CA28;
+        }
+
+        /* Touch interaction optimizations */
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF080 0%, #F3CA28 50%, #C99D0C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #F3CA28 0%, #E5B810 50%, #C99D0C 100%);
+        }
+
+        .lime-gradient-bg {
+            background: linear-gradient(135deg, #88D339 0%, #74C025 50%, #4F8D12 100%);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(15, 32, 19, 0.8) 0%, rgba(24, 44, 29, 0.9) 60%, rgba(15, 32, 19, 0.98) 100%);
+        }
+
+        .modal-backdrop {
+            background-color: rgba(15, 32, 19, 0.88);
+            backdrop-filter: blur(6px);
+        }
+    </style>
+</head>
+<body class="bg-scout-deep text-gray-100 font-sans antialiased selection:bg-scout-gold selection:text-scout-deep min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-scout-deep/95 backdrop-blur-md border-b border-scout-gold/30 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo & Title -->
+                <a href="#home" class="flex items-center space-x-3 group py-2">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-scout-lime border-2 border-scout-gold flex items-center justify-center text-scout-deep font-bold shadow-md group-hover:scale-105 transition-transform shrink-0">
+                        <i class="ph-bold ph-fleur-de-lis text-xl sm:text-2xl text-scout-deep"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-bold text-xs sm:text-base tracking-wider text-white group-hover:text-scout-gold transition-colors leading-tight">BOY SCOUTS OF THE PHILIPPINES</span>
+                        <span class="text-[10px] sm:text-xs text-scout-lime font-bold tracking-wider uppercase">Albor NHS Senior Scouts • Outfit 379</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-5 xl:space-x-6 text-sm font-medium" aria-label="Main Navigation">
+                    <a href="#home" class="text-gray-200 hover:text-scout-gold transition-colors py-2">Home</a>
+                    <a href="#about" class="text-gray-200 hover:text-scout-gold transition-colors py-2">About Us</a>
+                    <a href="#benefits" class="text-gray-200 hover:text-scout-gold transition-colors py-2">Benefits</a>
+                    <a href="#activities" class="text-gray-200 hover:text-scout-gold transition-colors py-2">Activities</a>
+                    <a href="#gallery" class="text-gray-200 hover:text-scout-gold transition-colors py-2">Gallery</a>
+                    <a href="#announcements" class="text-gray-200 hover:text-scout-gold transition-colors py-2">Announcements</a>
+                    <a href="#contact" class="text-gray-200 hover:text-scout-gold transition-colors py-2">Contact</a>
+                    
+                    <a href="#join" class="gold-gradient-bg text-scout-deep font-extrabold px-5 py-2.5 rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-all duration-200 flex items-center space-x-2 touch-target justify-center">
+                        <i class="ph-bold ph-user-plus text-base"></i>
+                        <span>JOIN OUTFIT 379</span>
+                    </a>
+                </nav>
+
+                <!-- Mobile Hamburger Button -->
+                <button type="button" id="mobileMenuBtn" class="lg:hidden p-3 rounded-xl text-gray-200 hover:text-white hover:bg-scout-cardBg focus:outline-none focus:ring-2 focus:ring-scout-gold touch-target flex items-center justify-center" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="ph-bold ph-list text-2xl" id="menuOpenIcon"></i>
+                    <i class="ph-bold ph-x text-2xl hidden" id="menuCloseIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div class="lg:hidden hidden border-b border-scout-gold/30 bg-scout-deep/98 px-4 pt-3 pb-6 space-y-2 max-h-[85vh] overflow-y-auto" id="mobileMenu">
+            <a href="#home" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">Home</a>
+            <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">About Us</a>
+            <a href="#benefits" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">Benefits</a>
+            <a href="#activities" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">Activities</a>
+            <a href="#gallery" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">Gallery</a>
+            <a href="#announcements" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">Announcements</a>
+            <a href="#contact" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:text-scout-gold hover:bg-scout-cardBg active:bg-scout-cardBg transition-colors">Contact</a>
+            <div class="pt-2">
+                <a href="#join" class="mobile-link w-full gold-gradient-bg text-scout-deep text-center font-extrabold px-5 py-3.5 rounded-xl shadow-md block text-base active:scale-98 transition-transform">
+                    JOIN OUTFIT 379
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center bg-cover bg-center overflow-hidden" style="background-image: url('848a6d8b-f653-4429-8d53-0c60f151d382 (1).jpg');">
+        <!-- Hero Background Dark Overlay -->
+        <div class="absolute inset-0 hero-overlay"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 sm:py-20 flex flex-col items-center">
+            
+            <!-- Outfit Badge Label -->
+            <div class="inline-flex items-center space-x-2 bg-scout-lime/20 border border-scout-lime/60 px-3.5 py-1.5 rounded-full text-xs sm:text-sm text-scout-lime font-bold tracking-wider uppercase mb-6 shadow-inner backdrop-blur-sm max-w-full">
+                <i class="ph-bold ph-shield-check text-base text-scout-gold shrink-0"></i>
+                <span class="truncate">ALBOR NHS SENIOR SCOUTS • OUTFIT 379</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="font-serif text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                LEADERSHIP. SERVICE. <br>
+                <span class="gold-gradient-text">LAGING HANDA.</span>
+            </h1>
+
+            <!-- Oath Quote -->
+            <div class="w-full max-w-md sm:max-w-xl mx-auto my-3 px-4 sm:px-6 py-3 rounded-2xl bg-scout-cardBg/90 border border-scout-gold/50 shadow-xl flex items-center justify-center space-x-2 sm:space-x-3 text-scout-gold font-serif text-xs sm:text-base">
+                <i class="ph-bold ph-fleur-de-lis text-xl sm:text-2xl shrink-0 text-scout-lime"></i>
+                <span class="font-bold italic">"ON MY HONOR, I WILL DO MY BEST"</span>
+            </div>
+
+            <!-- Supporting Text -->
+            <p class="max-w-2xl text-base sm:text-xl text-gray-200 my-4 font-light leading-relaxed">
+                "Discover your potential. Build lifelong skills. Serve your community with honor. Start your scouting journey at Albor National High School."
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 w-full sm:w-auto mt-4 px-2">
+                <a href="#join" class="w-full sm:w-auto gold-gradient-bg text-scout-deep font-extrabold text-base px-8 py-4 rounded-xl shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center space-x-2 touch-target">
+                    <i class="ph-bold ph-paper-plane-tilt text-xl"></i>
+                    <span>APPLY FOR OUTFIT 379</span>
+                </a>
+                <a href="#about" class="w-full sm:w-auto bg-scout-cardBg border-2 border-scout-lime text-white font-bold text-base px-8 py-4 rounded-xl shadow-lg hover:bg-scout-lime hover:text-scout-deep active:scale-95 transition-all duration-200 flex items-center justify-center space-x-2 touch-target">
+                    <i class="ph-bold ph-compass text-xl text-scout-gold"></i>
+                    <span>EXPLORE SCOUTING</span>
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about" class="mt-12 sm:mt-16 text-scout-lime hover:text-scout-gold transition-colors flex flex-col items-center space-y-1.5 animate-bounce touch-target justify-center" aria-label="Scroll to About section">
+                <span class="text-[10px] sm:text-xs uppercase tracking-widest font-bold">Scroll Down</span>
+                <i class="ph-bold ph-caret-down text-lg sm:text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-16 sm:py-20 bg-scout-deep border-b border-scout-cardBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="text-xs font-bold text-scout-lime tracking-widest uppercase">About Outfit 379</span>
+                <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-white mt-2 mb-4 leading-snug">
+                    BOY SCOUTS OF THE PHILIPPINES <br class="hidden sm:inline">
+                    <span class="gold-gradient-text">ALBOR NHS SENIOR SCOUTS</span>
+                </h2>
+                <div class="w-20 sm:w-24 h-1 lime-gradient-bg mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-300 text-sm sm:text-lg leading-relaxed">
+                    Senior Scouts Outfit 379 of Albor National High School provides progressive, value-based character development and experiential outdoor programs. Guided by our motto <strong>"Laging Handa"</strong>, we prepare young minds to lead with integrity, serve with compassion, and meet everyday challenges with honor.
+                </p>
+            </div>
+
+            <!-- Core Values Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
+                <!-- Value 1 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 p-6 rounded-2xl hover:border-scout-lime transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-scout-deep border border-scout-gold flex items-center justify-center text-scout-gold mb-4 text-2xl">
+                        <i class="ph-bold ph-hands-praying"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Duty to God & Country</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Instilling spiritual devotion, civic awareness, loyalty, and active love for the Philippines.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 p-6 rounded-2xl hover:border-scout-lime transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-scout-deep border border-scout-gold flex items-center justify-center text-scout-gold mb-4 text-2xl">
+                        <i class="ph-bold ph-scales"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Responsibility & Honor</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Fostering personal accountability, self-control, and honor in daily academic and personal life.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 p-6 rounded-2xl hover:border-scout-lime transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-scout-deep border border-scout-gold flex items-center justify-center text-scout-gold mb-4 text-2xl">
+                        <i class="ph-bold ph-heart-handshake"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Service to Others</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Dedicated to helping fellow citizens, assisting local communities, and embodying the daily good turn.</p>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 p-6 rounded-2xl hover:border-scout-lime transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-scout-deep border border-scout-gold flex items-center justify-center text-scout-gold mb-4 text-2xl">
+                        <i class="ph-bold ph-users-three"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Respect & Cooperation</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Promoting unity, respecting diversity, and building strong bonds through mutual support.</p>
+                </div>
+
+                <!-- Value 5 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 p-6 rounded-2xl hover:border-scout-lime transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-scout-deep border border-scout-gold flex items-center justify-center text-scout-gold mb-4 text-2xl">
+                        <i class="ph-bold ph-crown"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Leadership & Teamwork</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Training future youth leaders through patrol system dynamics, peer guidance, and collaborative tasks.</p>
+                </div>
+
+                <!-- Value 6 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 p-6 rounded-2xl hover:border-scout-lime transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-scout-deep border border-scout-gold flex items-center justify-center text-scout-gold mb-4 text-2xl">
+                        <i class="ph-bold ph-first-aid-kit"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Laging Handa (Preparedness)</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Living by the motto "Laging Handa" — equipping scouts with first aid, survival, and practical problem-solving skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS / WHY JOIN SECTION -->
+    <section id="benefits" class="py-16 sm:py-20 bg-scout-cardBg/40 border-b border-scout-cardBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="text-xs font-bold text-scout-lime tracking-widest uppercase">Student Advantages</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white mt-2 mb-4">WHY JOIN OUTFIT 379?</h2>
+                <p class="text-gray-300 text-sm sm:text-base">Scouting equips Albor National High School students with transformative experiences that extend far beyond the classroom.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
+                <!-- Benefit Card 1 -->
+                <div class="bg-scout-deep border border-scout-lime/30 p-6 rounded-2xl hover:border-scout-gold transition-all duration-300 shadow-xl group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-scout-lime/20 text-scout-lime border border-scout-lime flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="ph-bold ph-flag"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Leadership Development</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Develop confidence, decision-making, communication, and responsibility as a student leader in Senior Scouting.</p>
+                </div>
+
+                <!-- Benefit Card 2 -->
+                <div class="bg-scout-deep border border-scout-lime/30 p-6 rounded-2xl hover:border-scout-gold transition-all duration-300 shadow-xl group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-scout-lime/20 text-scout-lime border border-scout-lime flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="ph-bold ph-tree"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Outdoor Adventure</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Discover outdoor activities, camping, and nature exploration through properly supervised Outfit 379 programs.</p>
+                </div>
+
+                <!-- Benefit Card 3 -->
+                <div class="bg-scout-deep border border-scout-lime/30 p-6 rounded-2xl hover:border-scout-gold transition-all duration-300 shadow-xl group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-scout-lime/20 text-scout-lime border border-scout-lime flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="ph-bold ph-wrench"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Practical Life Skills</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Learn useful skills such as preparedness, problem-solving, and first-aid awareness through hands-on training.</p>
+                </div>
+
+                <!-- Benefit Card 4 -->
+                <div class="bg-scout-deep border border-scout-lime/30 p-6 rounded-2xl hover:border-scout-gold transition-all duration-300 shadow-xl group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-scout-lime/20 text-scout-lime border border-scout-lime flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="ph-bold ph-users"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Brotherhood & Friendship</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Build meaningful lifelong friendships and learn how to collaborate effectively within Senior Scout patrols.</p>
+                </div>
+
+                <!-- Benefit Card 5 -->
+                <div class="bg-scout-deep border border-scout-lime/30 p-6 rounded-2xl hover:border-scout-gold transition-all duration-300 shadow-xl group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-scout-lime/20 text-scout-lime border border-scout-lime flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="ph-bold ph-hand-heart"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Community Service</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Take part in approved civic projects that help the school and local Albor community thrive.</p>
+                </div>
+
+                <!-- Benefit Card 6 -->
+                <div class="bg-scout-deep border border-scout-lime/30 p-6 rounded-2xl hover:border-scout-gold transition-all duration-300 shadow-xl group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-scout-lime/20 text-scout-lime border border-scout-lime flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="ph-bold ph-sparkle"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Personal Growth</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">Develop discipline, resilience, confidence, and a positive attitude toward lifelong service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVITIES SECTION -->
+    <section id="activities" class="py-16 sm:py-20 bg-scout-deep border-b border-scout-cardBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="text-xs font-bold text-scout-gold tracking-widest uppercase">Programs & Experience</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white mt-2 mb-4">SCOUTING ACTIVITIES</h2>
+                <p class="text-gray-300 text-sm sm:text-base">Illustrative examples of training sessions and outdoor activities conducted under school supervision.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+                <!-- Activity Item 1 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="0a573c52-dbec-4491-ad95-5ae0bb65d5a9.jpg" alt="Scout Ceremonies and Oath" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Scout Oath & Ceremonies</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Formal scouting ceremonies, oath recitations, and troop assemblies.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 2 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="55832f20-b0bc-4dd4-b7fc-5bf1a1073f22 (1).jpg" alt="Patrol Formation and Drills" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Patrol Drills & Flag Honors</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Demonstrating pride, unity, and discipline through regular drills and flag ceremonies.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 3 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="131a4fde-dfff-48e1-9b7d-f745dcaaf13d.jpg" alt="Outdoor Training & Scouting Activities" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Outdoor Campcraft & Training</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Hands-on outdoor skills, pioneering, and survival training sessions.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 4 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="8e4fc1ad-e3b5-4816-93b4-6c9475a7c46d.jpg" alt="Troop Assemblies and Gatherings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Troop Assemblies & Bonding</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Fostering camaraderie, mutual support, and leadership across all grade levels.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 5 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="5c3f5690-d80e-45b3-9e26-5fcebaf14723.jpg" alt="Community Service and Cleanups" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Civic & Campus Service</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Active participation in school maintenance, cleanups, and community outreach.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 6 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="4aae733b-1037-4295-86ff-78130b59fc3e.jpg" alt="First Aid & Disaster Preparedness" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">First Aid & Emergency Response</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Equipping scouts with essential life-saving techniques and disaster preparedness.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 7 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="848a6d8b-f653-4429-8d53-0c60f151d382.jpg" alt="Awards and Recognition" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Recognition & Advancement</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Honoring scout achievements, badge advancements, and leadership contributions.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Item 8 -->
+                <div class="bg-scout-cardBg border border-scout-gold/30 rounded-2xl overflow-hidden shadow-lg group hover:border-scout-lime transition-all duration-300">
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="55832f20-b0bc-4dd4-b7fc-5bf1a1073f22.jpg" alt="Outfit 379 Leaders" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-scout-deep via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-serif font-bold text-base sm:text-lg text-white mb-1.5">Senior Scout Patrol Leaders</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">Developing young leaders to guide and mentor fellow students of Albor NHS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDENT RECRUITMENT SECTION -->
+    <section id="join" class="py-16 sm:py-20 bg-scout-deep border-b border-scout-gold/20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-8 sm:mb-12">
+                <span class="text-xs font-bold text-scout-lime tracking-widest uppercase">Student Membership</span>
+                <h2 class="font-serif text-2xl sm:text-5xl font-bold text-white mt-2 mb-4">JOIN OUTFIT 379 TODAY</h2>
+                <p class="text-gray-200 text-sm sm:text-base max-w-2xl mx-auto">
+                    Ready to develop your skills, build friendships, and become a responsible leader? Apply to join the Boy Scouts of the Philippines Outfit 379 at Albor National High School.
+                </p>
+            </div>
+
+            <!-- Mandatory Eligibility Notice Callout -->
+            <div class="bg-scout-cardBg border-2 border-scout-gold text-amber-100 p-4 sm:p-5 rounded-2xl mb-8 sm:mb-10 flex items-start space-x-3.5 shadow-lg">
+                <i class="ph-bold ph-warning-circle text-2xl sm:text-3xl text-scout-gold shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm leading-relaxed">
+                    <strong class="font-bold text-scout-gold uppercase tracking-wider block mb-1">IMPORTANT ELIGIBILITY REQUIREMENT:</strong>
+                    This recruitment system is exclusively for students currently enrolled at <strong>Albor National High School</strong>. Applicants from other educational institutions are not eligible for Outfit 379 application.
+                </div>
+            </div>
+
+            <!-- Application Form Container -->
+            <div class="bg-scout-cardBg border-2 border-scout-gold/40 p-5 sm:p-10 rounded-3xl shadow-2xl backdrop-blur-sm">
+                <form id="recruitmentForm" class="space-y-5 sm:space-y-6" novalidate>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="fullName" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Full Name <span class="text-scout-gold">*</span>
+                            </label>
+                            <input type="text" id="fullName" required placeholder="e.g., Juan Dela Cruz" class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                            <p class="text-red-400 text-xs mt-1 hidden" id="err-fullName">Please enter your complete full name.</p>
+                        </div>
+
+                        <!-- Age -->
+                        <div>
+                            <label for="age" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Age <span class="text-scout-gold">*</span>
+                            </label>
+                            <input type="number" id="age" min="10" max="25" required placeholder="e.g., 14" class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                            <p class="text-red-400 text-xs mt-1 hidden" id="err-age">Please enter a valid age (10-25).</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        <!-- Grade Level -->
+                        <div>
+                            <label for="gradeLevel" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Grade Level <span class="text-scout-gold">*</span>
+                            </label>
+                            <select id="gradeLevel" required class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                                <option value="" disabled selected>Select Grade Level</option>
+                                <option value="Grade 7">Grade 7</option>
+                                <option value="Grade 8">Grade 8</option>
+                                <option value="Grade 9">Grade 9</option>
+                                <option value="Grade 10">Grade 10</option>
+                                <option value="Grade 11">Grade 11</option>
+                                <option value="Grade 12">Grade 12</option>
+                            </select>
+                            <p class="text-red-400 text-xs mt-1 hidden" id="err-gradeLevel">Please select your grade level.</p>
+                        </div>
+
+                        <!-- Section -->
+                        <div>
+                            <label for="section" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Section <span class="text-scout-gold">*</span>
+                            </label>
+                            <input type="text" id="section" required placeholder="e.g., Sampaguita / TVL-A" class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                            <p class="text-red-400 text-xs mt-1 hidden" id="err-section">Please enter your class section.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        <!-- Facebook Profile Name -->
+                        <div>
+                            <label for="fbProfile" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Facebook Profile Name <span class="text-scout-gold">*</span>
+                            </label>
+                            <input type="text" id="fbProfile" required placeholder="Exact FB Name or Messenger Username" class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                            <p class="text-red-400 text-xs mt-1 hidden" id="err-fbProfile">Provide your Facebook name so advisers can identify your account.</p>
+                        </div>
+
+                        <!-- Preferred Contact Method -->
+                        <div>
+                            <label for="contactMethod" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Preferred Contact Method <span class="text-scout-gold">*</span>
+                            </label>
+                            <select id="contactMethod" required class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                                <option value="Facebook Messenger" selected>Facebook Messenger</option>
+                                <option value="School Consultation">In-Person School Consultation</option>
+                                <option value="SMS / Mobile">SMS / Mobile</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Reason for Joining -->
+                    <div>
+                        <label for="reason" class="block text-sm font-semibold text-gray-200 mb-2">
+                            Why do you want to join Senior Scouts Outfit 379? <span class="text-scout-gold">*</span>
+                        </label>
+                        <textarea id="reason" rows="3" required placeholder="Share your motivation (e.g., learn leadership, outdoor camping, community service)..." class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors"></textarea>
+                        <p class="text-red-400 text-xs mt-1 hidden" id="err-reason">Please share a brief reason for applying.</p>
+                    </div>
+
+                    <!-- Parent / Guardian Consent Confirmation -->
+                    <div>
+                        <label for="guardianConsent" class="block text-sm font-semibold text-gray-200 mb-2">
+                            Parent/Guardian Consent Confirmation <span class="text-scout-gold">*</span>
+                        </label>
+                        <select id="guardianConsent" required class="w-full bg-scout-deep border border-scout-gold/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-scout-lime focus:ring-1 focus:ring-scout-lime transition-colors touch-target">
+                            <option value="" disabled selected>Select Consent Status</option>
+                            <option value="Yes - My parents/guardians support my application">Yes - My parent/guardian permits my application</option>
+                            <option value="Will secure signed consent slip upon orientation">Will submit official signed consent slip at school orientation</option>
+                        </select>
+                        <p class="text-red-400 text-xs mt-1 hidden" id="err-guardianConsent">Please select your guardian consent status.</p>
+                    </div>
+
+                    <hr class="border-scout-gold/20 my-6">
+
+                    <!-- Eligibility Checkboxes (Mandatory) -->
+                    <div class="space-y-4">
+                        <label class="flex items-start space-x-3 cursor-pointer py-1">
+                            <input type="checkbox" id="chkEnrollment" required class="mt-1 w-5 h-5 rounded accent-scout-gold bg-scout-deep border-scout-gold/40 focus:ring-scout-gold shrink-0 touch-target">
+                            <span class="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                                <strong>I confirm that I am currently enrolled at Albor National High School</strong> and that all information provided in this application is accurate and truthful.
+                            </span>
+                        </label>
+                        <p class="text-red-400 text-xs hidden" id="err-chkEnrollment">You must confirm your current enrollment at Albor National High School.</p>
+
+                        <label class="flex items-start space-x-3 cursor-pointer py-1">
+                            <input type="checkbox" id="chkReview" required class="mt-1 w-5 h-5 rounded accent-scout-gold bg-scout-deep border-scout-gold/40 focus:ring-scout-gold shrink-0 touch-target">
+                            <span class="text-xs sm:text-sm text-gray-200 leading-relaxed">
+                                I understand that my application will be reviewed by authorized scouting advisers of Outfit 379 and that submitting this form does not guarantee automatic acceptance.
+                            </span>
+                        </label>
+                        <p class="text-red-400 text-xs hidden" id="err-chkReview">You must acknowledge the application review process.</p>
+                    </div>
+
+                    <!-- Submit / Review Trigger Button -->
+                    <div class="pt-4">
+                        <button type="button" id="reviewAppBtn" class="w-full gold-gradient-bg text-scout-deep font-extrabold text-sm sm:text-base py-4 px-6 rounded-xl shadow-xl hover:brightness-110 active:scale-98 transition-all duration-200 flex items-center justify-center space-x-2 touch-target">
+                            <i class="ph-bold ph-check-square text-xl"></i>
+                            <span>REVIEW & GENERATE APPLICATION MESSAGE</span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATION REVIEW MODAL -->
+    <div id="reviewModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-scout-deep border-2 border-scout-gold rounded-3xl max-w-2xl w-full p-5 sm:p-8 shadow-2xl relative my-auto">
+            
+            <button type="button" id="closeModalBtn" class="absolute top-3 right-3 text-gray-400 hover:text-white p-2.5 text-2xl touch-target flex items-center justify-center" aria-label="Close modal">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="text-center mb-5 sm:mb-6">
+                <div class="w-12 h-12 rounded-full bg-scout-lime text-scout-deep flex items-center justify-center mx-auto text-2xl mb-2 font-bold">
+                    <i class="ph-bold ph-file-text"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl sm:text-2xl text-white">Review Your Scouting Application</h3>
+                <p class="text-xs text-scout-lime mt-1 font-semibold">Albor NHS Senior Scouts • Outfit 379</p>
+            </div>
+
+            <!-- Formatted Message Preview Box -->
+            <div class="bg-scout-cardBg border border-scout-gold/40 rounded-2xl p-4 text-xs sm:text-sm text-gray-100 font-mono whitespace-pre-line leading-relaxed mb-5 overflow-x-auto max-h-52 sm:max-h-60 select-all" id="formattedMessageBox">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Instructions -->
+            <div class="bg-scout-cardBg/60 border border-scout-lime/30 rounded-xl p-3.5 sm:p-4 mb-5 text-xs text-gray-300 space-y-1.5">
+                <div class="font-bold text-scout-gold flex items-center space-x-1">
+                    <i class="ph-bold ph-info text-base"></i>
+                    <span>NEXT STEPS TO COMPLETE APPLICATION:</span>
+                </div>
+                <ol class="list-decimal list-inside space-y-1 text-gray-300">
+                    <li>Click <strong>COPY APPLICATION MESSAGE</strong> below to copy details.</li>
+                    <li>Click <strong>OPEN MESSENGER & SEND</strong> to launch Facebook Messenger.</li>
+                    <li>Paste your copied message in the conversation and send!</li>
+                </ol>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <button type="button" id="copyBtn" class="w-full sm:w-1/2 bg-scout-cardBg border-2 border-scout-lime text-scout-lime font-bold py-3.5 px-4 rounded-xl hover:bg-scout-lime hover:text-scout-deep transition-all duration-200 flex items-center justify-center space-x-2 touch-target">
+                    <i class="ph-bold ph-copy text-lg" id="copyBtnIcon"></i>
+                    <span id="copyBtnText" class="text-xs sm:text-sm">COPY APPLICATION MESSAGE</span>
+                </button>
+
+                <a href="https://m.me/ANHSbsp" target="_blank" rel="noopener noreferrer" id="messengerBtn" class="w-full sm:w-1/2 gold-gradient-bg text-scout-deep font-extrabold py-3.5 px-4 rounded-xl hover:brightness-110 transition-all duration-200 flex items-center justify-center space-x-2 text-center touch-target">
+                    <i class="ph-bold ph-messenger-logo text-xl"></i>
+                    <span class="text-xs sm:text-sm">OPEN MESSENGER & SEND</span>
+                </a>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="button" id="editFormBtn" class="text-xs text-scout-gold/80 hover:text-scout-gold underline py-2 touch-target">
+                    Edit Application Information
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-16 sm:py-20 bg-scout-cardBg/30 border-b border-scout-cardBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="text-xs font-bold text-scout-lime tracking-widest uppercase">Photo Showcase</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white mt-2 mb-4">OUTFIT 379 IN ACTION</h2>
+                <p class="text-gray-300 text-sm sm:text-base">Highlights of character-building moments, leadership drills, and community activities.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Image 1 -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-scout-gold/30 bg-scout-deep aspect-video cursor-pointer gallery-item" data-img="848a6d8b-f653-4429-8d53-0c60f151d382 (1).jpg" data-caption="Outfit 379 Official Ceremony and Oath Recitation">
+                    <img src="848a6d8b-f653-4429-8d53-0c60f151d382 (1).jpg" alt="Scout Ceremony" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-scout-deep/85 sm:bg-scout-deep/80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-scout-lime font-bold">Scout Oath</span>
+                        <span class="text-xs sm:text-sm font-semibold text-white">Outfit 379 Official Ceremony</span>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-scout-gold/30 bg-scout-deep aspect-video cursor-pointer gallery-item" data-img="55832f20-b0bc-4dd4-b7fc-5bf1a1073f22 (1).jpg" data-caption="Albor NHS Senior Scouts Flag Formation and Patrol Drill">
+                    <img src="55832f20-b0bc-4dd4-b7fc-5bf1a1073f22 (1).jpg" alt="Flag Drill" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-scout-deep/85 sm:bg-scout-deep/80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-scout-lime font-bold">Flag Drill</span>
+                        <span class="text-xs sm:text-sm font-semibold text-white">Patrol Assembly & Flag Honors</span>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-scout-gold/30 bg-scout-deep aspect-video cursor-pointer gallery-item" data-img="0a573c52-dbec-4491-ad95-5ae0bb65d5a9.jpg" data-caption="Scout Oath & Hand Sign Ceremony">
+                    <img src="0a573c52-dbec-4491-ad95-5ae0bb65d5a9.jpg" alt="Scout Sign" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-scout-deep/85 sm:bg-scout-deep/80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-scout-lime font-bold">Brotherhood</span>
+                        <span class="text-xs sm:text-sm font-semibold text-white">Scout Sign & Oath Recitation</span>
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-scout-gold/30 bg-scout-deep aspect-video cursor-pointer gallery-item" data-img="131a4fde-dfff-48e1-9b7d-f745dcaaf13d.jpg" data-caption="Campcraft & Outdoor Skills Training">
+                    <img src="131a4fde-dfff-48e1-9b7d-f745dcaaf13d.jpg" alt="Campcraft" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-scout-deep/85 sm:bg-scout-deep/80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-scout-lime font-bold">Outdoor Skills</span>
+                        <span class="text-xs sm:text-sm font-semibold text-white">Outdoor Scouting Activities</span>
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-scout-gold/30 bg-scout-deep aspect-video cursor-pointer gallery-item" data-img="4aae733b-1037-4295-86ff-78130b59fc3e.jpg" data-caption="First Aid & Emergency Response Training">
+                    <img src="4aae733b-1037-4295-86ff-78130b59fc3e.jpg" alt="First Aid Training" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-scout-deep/85 sm:bg-scout-deep/80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-scout-lime font-bold">Laging Handa</span>
+                        <span class="text-xs sm:text-sm font-semibold text-white">First Aid & Preparedness</span>
+                    </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-scout-gold/30 bg-scout-deep aspect-video cursor-pointer gallery-item" data-img="5c3f5690-d80e-45b3-9e26-5fcebaf14723.jpg" data-caption="Community Cleanliness & Service Activity">
+                    <img src="5c3f5690-d80e-45b3-9e26-5fcebaf14723.jpg" alt="Community Service" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-scout-deep/85 sm:bg-scout-deep/80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-scout-lime font-bold">Civic Service</span>
+                        <span class="text-xs sm:text-sm font-semibold text-white">Environmental Cleanup Drive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-3 sm:p-4">
+        <div class="max-w-4xl w-full bg-scout-deep border-2 border-scout-gold rounded-2xl overflow-hidden shadow-2xl relative">
+            <button type="button" id="closeLightboxBtn" class="absolute top-3 right-3 text-white bg-scout-deep/80 hover:bg-scout-cardBg p-2.5 rounded-full text-xl z-10 touch-target flex items-center justify-center">
+                <i class="ph-bold ph-x"></i>
+            </button>
+            <div class="max-h-[70vh] sm:max-h-[75vh] overflow-hidden flex items-center justify-center bg-black">
+                <img id="lightboxImg" src="" alt="Gallery Preview" class="max-h-[70vh] sm:max-h-[75vh] w-auto object-contain">
+            </div>
+            <div class="p-4 bg-scout-cardBg text-center text-xs sm:text-sm font-semibold text-white" id="lightboxCaption">
+                <!-- Dynamic Caption -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ANNOUNCEMENTS SECTION -->
+    <section id="announcements" class="py-16 sm:py-20 bg-scout-deep border-b border-scout-cardBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="text-xs font-bold text-scout-lime tracking-widest uppercase">Latest Updates</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white mt-2 mb-4">RECRUITMENT & BULLETIN</h2>
+                <p class="text-gray-300 text-sm sm:text-base">Stay informed on upcoming Outfit 379 orientation schedules and troop notices.</p>
+            </div>
+
+            <!-- Announcements Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Announcement Card 1 -->
+                <div class="bg-scout-cardBg border-l-4 border-scout-lime p-5 sm:p-6 rounded-r-2xl border-t border-b border-r border-scout-gold/20 shadow-lg">
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-bold mb-3">
+                        <span class="inline-flex items-center space-x-1 text-scout-lime">
+                            <i class="ph-bold ph-megaphone text-base"></i>
+                            <span>RECRUITMENT NOTICE</span>
+                        </span>
+                        <span class="bg-scout-deep text-scout-gold px-3 py-1 rounded-full border border-scout-gold/30">Academic Year 2026-2027</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Outfit 379 Senior Scout Recruitment Launched</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                        Application lines are now open for all currently enrolled Junior and Senior High School students at Albor National High School. Submit your application form via Messenger today!
+                    </p>
+                    <div class="text-xs text-scout-lime font-medium flex items-center space-x-1.5">
+                        <i class="ph-bold ph-calendar-blank text-base"></i> <span>Status: Active Registration</span>
+                    </div>
+                </div>
+
+                <!-- Announcement Card 2 -->
+                <div class="bg-scout-cardBg border-l-4 border-scout-gold p-5 sm:p-6 rounded-r-2xl border-t border-b border-r border-scout-gold/20 shadow-lg">
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-bold mb-3">
+                        <span class="inline-flex items-center space-x-1 text-scout-gold">
+                            <i class="ph-bold ph-users-three text-base"></i>
+                            <span>ORIENTATION SCHEDULE</span>
+                        </span>
+                        <span class="bg-scout-deep text-scout-lime px-3 py-1 rounded-full border border-scout-lime/30">Schedule TBA</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white mb-2">Applicant Orientation & Briefing</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                        All verified applicants will receive details regarding the upcoming school orientation session through Facebook Messenger. Parent consent forms will be distributed during orientation.
+                    </p>
+                    <div class="text-xs text-gray-300 flex items-center space-x-1.5">
+                        <i class="ph-bold ph-map-pin text-scout-lime text-base"></i> <span>Location: Albor National High School Campus</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maintenance Notice Note -->
+            <div class="mt-8 text-center text-xs text-gray-400">
+                <i class="ph-bold ph-info text-scout-lime"></i> Note: Announcement updates are maintained directly by authorized school scouting coordinators for Outfit 379.
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 sm:py-20 bg-scout-cardBg/40 border-b border-scout-cardBg">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-scout-lime text-scout-deep flex items-center justify-center mx-auto text-2xl sm:text-3xl mb-5 shadow-xl border-2 border-scout-gold">
+                <i class="ph-bold ph-chats"></i>
+            </div>
+
+            <span class="text-xs font-bold text-scout-lime tracking-widest uppercase">Get in Touch</span>
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white mt-2 mb-4">CONTACT OUTFIT 379 TEAM</h2>
+            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                Have questions about recruitment, requirements, or activities? Reach out directly to our authorized scouting unit advisers through Facebook Messenger.
+            </p>
+
+            <div class="bg-scout-deep border-2 border-scout-gold/40 p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto shadow-2xl space-y-6">
+                <div>
+                    <span class="text-xs text-scout-lime font-bold uppercase tracking-widest block mb-1">Official Scouting Unit</span>
+                    <strong class="font-serif text-lg sm:text-xl text-white block">Boy Scouts of the Philippines — Albor NHS Senior Scouts Outfit 379</strong>
+                </div>
+
+                <div class="pt-2">
+                    <a href="https://www.facebook.com/profile.php?id=61590367363843" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto gold-gradient-bg text-scout-deep font-extrabold text-base sm:text-lg px-6 sm:px-8 py-4 rounded-xl shadow-xl hover:brightness-110 transition-all duration-200 inline-flex items-center justify-center space-x-3 touch-target">
+                        <i class="ph-bold ph-messenger-logo text-2xl"></i>
+                        <span>MESSAGE OUTFIT 379 TEAM</span>
+                    </a>
+                </div>
+
+                <div class="text-xs text-gray-400 pt-2 border-t border-scout-gold/10">
+                    Direct Messenger Link: <a href="https://www.facebook.com/profile.php?id=61590367363843" target="_blank" class="text-scout-lime hover:underline font-semibold break-all">https://m.me/ANHSbsp</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRIVACY NOTICE MODAL -->
+    <div id="privacyModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-scout-deep border-2 border-scout-gold rounded-3xl max-w-2xl w-full p-5 sm:p-8 shadow-2xl relative my-auto">
+            <button type="button" id="closePrivacyBtn" class="absolute top-3 right-3 text-gray-400 hover:text-white p-2.5 text-2xl touch-target flex items-center justify-center" aria-label="Close modal">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-5 sm:mb-6">
+                <div class="w-10 h-10 rounded-full bg-scout-lime text-scout-deep flex items-center justify-center text-xl shrink-0 font-bold">
+                    <i class="ph-bold ph-shield-check"></i>
+                </div>
+                <h3 class="font-serif font-bold text-lg sm:text-2xl text-white">Privacy Notice & Protection</h3>
+            </div>
+
+            <div class="space-y-3.5 text-xs sm:text-sm text-gray-300 leading-relaxed max-h-80 sm:max-h-96 overflow-y-auto pr-2">
+                <p><strong>1. Purpose of Information Collection:</strong> Information requested in the recruitment form (Name, Grade, Section, Age, and Facebook Profile Name) is solely used for evaluating eligibility for membership in the Boy Scouts of the Philippines Outfit 379 at Albor National High School.</p>
+                
+                <p><strong>2. Data Processing & Privacy Security:</strong> This website is a client-side portal. It does <strong>NOT</strong> collect, store, or transmit personal details to any database or external cloud server. All information remains on your local device until you choose to copy and send it via Facebook Messenger.</p>
+
+                <p><strong>3. Review Authorization:</strong> Only designated ANHS Scouting Advisers and Coordinators of Outfit 379 are authorized to review membership applications received via official channels.</p>
+
+                <p><strong>4. Minor Student Protection:</strong> In compliance with school guidelines and Philippine Data Privacy principles, minor students are required to secure parental or guardian consent before participating in official scouting activities and encampments.</p>
+
+                <p><strong>5. Verification & Contact:</strong> For inquiries regarding student privacy or recruitment procedures, please contact the authorized school scouting coordinator via our official Messenger channel.</p>
+            </div>
+
+            <div class="mt-6 text-right">
+                <button type="button" id="dismissPrivacyBtn" class="w-full sm:w-auto gold-gradient-bg text-scout-deep font-bold px-6 py-3 rounded-xl text-sm hover:brightness-110 touch-target">
+                    I UNDERSTAND
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-scout-deep border-t border-scout-gold/30 pt-12 sm:pt-16 pb-10 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
+                
+                <!-- Col 1: Organization Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-scout-lime border border-scout-gold flex items-center justify-center text-scout-deep text-xl font-bold shrink-0">
+                            <i class="ph-bold ph-fleur-de-lis"></i>
+                        </div>
+                        <div>
+                            <span class="font-serif font-bold text-white text-sm sm:text-base block">BOY SCOUTS OF THE PHILIPPINES</span>
+                            <span class="text-[10px] sm:text-xs text-scout-lime font-bold uppercase tracking-wider">Albor NHS Senior Scouts • Outfit 379</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed max-w-md">
+                        Dedicated to inspiring young Filipinos at Albor National High School to become self-reliant, responsible, and service-oriented leaders through the Scout Oath and Law.
+                    </p>
+                    <p class="text-xs text-scout-gold font-semibold italic font-serif flex items-center space-x-2">
+                        <i class="ph-bold ph-fleur-de-lis text-sm text-scout-lime"></i>
+                        <span>"On My Honor, I Will Do My Best" — Laging Handa</span>
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm uppercase tracking-wider mb-3.5 border-b border-scout-gold/20 pb-2">Quick Navigation</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#home" class="hover:text-scout-lime transition-colors py-1 inline-block">Home</a></li>
+                        <li><a href="#about" class="hover:text-scout-lime transition-colors py-1 inline-block">About Us</a></li>
+                        <li><a href="#benefits" class="hover:text-scout-lime transition-colors py-1 inline-block">Benefits of Scouting</a></li>
+                        <li><a href="#activities" class="hover:text-scout-lime transition-colors py-1 inline-block">Activities</a></li>
+                        <li><a href="#gallery" class="hover:text-scout-lime transition-colors py-1 inline-block">Photo Gallery</a></li>
+                        <li><a href="#announcements" class="hover:text-scout-lime transition-colors py-1 inline-block">Announcements</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal & Messenger -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm uppercase tracking-wider mb-3.5 border-b border-scout-gold/20 pb-2">Recruitment & Privacy</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#join" class="text-scout-gold hover:underline font-bold py-1 inline-block">Join Outfit 379</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61590367363843" target="_blank" rel="noopener noreferrer" class="hover:text-scout-lime transition-colors py-1 inline-block">Official Messenger</a></li>
+                        <li><button type="button" id="openPrivacyBtn" class="hover:text-scout-lime transition-colors text-left underline py-1">Privacy Notice & Protection</button></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-scout-cardBg pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+                <div class="text-center sm:text-left">
+                    &copy; <span id="copyrightYear"></span> Boy Scouts of the Philippines — Albor NHS Senior Scouts Outfit 379. All rights reserved.
+                </div>
+                <div class="text-center sm:text-right text-[11px] text-gray-400">
+                    An official student recruitment portal for Albor National High School.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CLIENT-SIDE JAVASCRIPT LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Dynamic Copyright Year
+            document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+            // Mobile Navigation Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOpenIcon = document.getElementById('menuOpenIcon');
+            const menuCloseIcon = document.getElementById('menuCloseIcon');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                mobileMenuBtn.setAttribute('aria-expanded', !expanded);
+                mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+            });
+
+            // Close Mobile Menu when link clicked
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Form Fields & Error Elements
+            const form = document.getElementById('recruitmentForm');
+            const reviewAppBtn = document.getElementById('reviewAppBtn');
+            const reviewModal = document.getElementById('reviewModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const editFormBtn = document.getElementById('editFormBtn');
+            const formattedMessageBox = document.getElementById('formattedMessageBox');
+            const copyBtn = document.getElementById('copyBtn');
+            const copyBtnText = document.getElementById('copyBtnText');
+            const copyBtnIcon = document.getElementById('copyBtnIcon');
+
+            // Form input elements
+            const fullName = document.getElementById('fullName');
+            const age = document.getElementById('age');
+            const gradeLevel = document.getElementById('gradeLevel');
+            const section = document.getElementById('section');
+            const fbProfile = document.getElementById('fbProfile');
+            const contactMethod = document.getElementById('contactMethod');
+            const reason = document.getElementById('reason');
+            const guardianConsent = document.getElementById('guardianConsent');
+            const chkEnrollment = document.getElementById('chkEnrollment');
+            const chkReview = document.getElementById('chkReview');
+
+            let generatedMessage = "";
+
+            // Form Validation Function
+            function validateForm() {
+                let isValid = true;
+
+                // Full Name
+                if (!fullName.value.trim() || fullName.value.trim().length < 2) {
+                    document.getElementById('err-fullName').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-fullName').classList.add('hidden');
+                }
+
+                // Age
+                const ageVal = parseInt(age.value, 10);
+                if (!age.value || isNaN(ageVal) || ageVal < 10 || ageVal > 25) {
+                    document.getElementById('err-age').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-age').classList.add('hidden');
+                }
+
+                // Grade Level
+                if (!gradeLevel.value) {
+                    document.getElementById('err-gradeLevel').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-gradeLevel').classList.add('hidden');
+                }
+
+                // Section
+                if (!section.value.trim()) {
+                    document.getElementById('err-section').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-section').classList.add('hidden');
+                }
+
+                // FB Profile
+                if (!fbProfile.value.trim()) {
+                    document.getElementById('err-fbProfile').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-fbProfile').classList.add('hidden');
+                }
+
+                // Reason
+                if (!reason.value.trim() || reason.value.trim().length < 5) {
+                    document.getElementById('err-reason').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-reason').classList.add('hidden');
+                }
+
+                // Guardian Consent
+                if (!guardianConsent.value) {
+                    document.getElementById('err-guardianConsent').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-guardianConsent').classList.add('hidden');
+                }
+
+                // Checkboxes
+                if (!chkEnrollment.checked) {
+                    document.getElementById('err-chkEnrollment').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-chkEnrollment').classList.add('hidden');
+                }
+
+                if (!chkReview.checked) {
+                    document.getElementById('err-chkReview').classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    document.getElementById('err-chkReview').classList.add('hidden');
+                }
+
+                return isValid;
+            }
+
+            // Review Button Click Logic
+            reviewAppBtn.addEventListener('click', function() {
+                if (!validateForm()) {
+                    // Scroll to first error on form
+                    const firstErr = form.querySelector('.text-red-400:not(.hidden)');
+                    if (firstErr) {
+                        firstErr.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+
+                // Generate exact required template message
+                generatedMessage = `Good day, Boy Scouts of the Philippines — Albor NHS Senior Scouts (Outfit 379)!
+
+I would like to apply for membership in Outfit 379.
+
+Full Name: ${fullName.value.trim()}
+Grade Level: ${gradeLevel.value}
+Section: ${section.value.trim()}
+Age: ${age.value.trim()}
+Facebook Profile Name: ${fbProfile.value.trim()}
+Reason for Joining: ${reason.value.trim()}
+
+I confirm that I am currently enrolled at Albor National High School.
+I understand that my application is subject to eligibility verification and approval by the authorized scouting coordinator.
+
+Thank you!`;
+
+                formattedMessageBox.textContent = generatedMessage;
+                reviewModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close Modal Logic
+            function closeModal() {
+                reviewModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            editFormBtn.addEventListener('click', closeModal);
+
+            // Copy Application Message to Clipboard
+            copyBtn.addEventListener('click', function() {
+                if (!generatedMessage) return;
+
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(generatedMessage).then(showCopySuccess).catch(fallbackCopy);
+                } else {
+                    fallbackCopy();
+                }
+            });
+
+            function fallbackCopy() {
+                const textArea = document.createElement('textarea');
+                textArea.value = generatedMessage;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopySuccess();
+                } catch (err) {
+                    alert('Unable to copy automatically. Please manually select and copy text from the preview box.');
+                }
+                document.body.removeChild(textArea);
+            }
+
+            function showCopySuccess() {
+                copyBtnText.textContent = "COPIED TO CLIPBOARD!";
+                copyBtnIcon.className = "ph-bold ph-check text-lg text-emerald-400";
+                copyBtn.classList.add('border-emerald-400', 'text-emerald-400');
+
+                setTimeout(() => {
+                    copyBtnText.textContent = "COPY APPLICATION MESSAGE";
+                    copyBtnIcon.className = "ph-bold ph-copy text-lg";
+                    copyBtn.classList.remove('border-emerald-400', 'text-emerald-400');
+                }, 3000);
+            }
+
+            // Lightbox Gallery
+            const lightboxModal = document.getElementById('lightboxModal');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.getAttribute('data-img');
+                    const caption = this.getAttribute('data-caption');
+                    lightboxImg.src = imgSrc;
+                    lightboxCaption.textContent = caption;
+                    lightboxModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeLightboxBtn.addEventListener('click', function() {
+                lightboxModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+
+            // Privacy Notice Modal Trigger
+            const privacyModal = document.getElementById('privacyModal');
+            const openPrivacyBtn = document.getElementById('openPrivacyBtn');
+            const closePrivacyBtn = document.getElementById('closePrivacyBtn');
+            const dismissPrivacyBtn = document.getElementById('dismissPrivacyBtn');
+
+            openPrivacyBtn.addEventListener('click', function() {
+                privacyModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closePrivacy() {
+                privacyModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            closePrivacyBtn.addEventListener('click', closePrivacy);
+            dismissPrivacyBtn.addEventListener('click', closePrivacy);
+
+            // Close modals when clicking backdrop
+            window.addEventListener('click', function(e) {
+                if (e.target === reviewModal) closeModal();
+                if (e.target === lightboxModal) {
+                    lightboxModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+                if (e.target === privacyModal) closePrivacy();
+            });
+
+        });
+    </script>
+</body>
+</html>
